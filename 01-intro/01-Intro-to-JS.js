@@ -47,4 +47,4 @@ alert(`Dear ${user}, your email is ${email}, your password is ${password}`);
 let secondsInHour = 60 * 60;
 let secondsInDay = 24 * secondsInHour;
 let secondsInMonth = 30 * secondsInDay;
-console.log(`${secondsInHour}, ${secondsInDay}, ${secondsInMonth}`);
+alert(`${secondsInHour}, ${secondsInDay}, ${secondsInMonth}`);
