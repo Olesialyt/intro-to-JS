@@ -17,7 +17,7 @@ let res2 = "" + x + y;
 console.log(res2);
 console.log(typeof res2); // ""string""
 
-let res3 = x; 
+let res3 = x;
 console.log(res3); // true
 console.log(typeof res3); // ""boolean""
 x = "text";
@@ -91,3 +91,18 @@ if (isNaN(a) || isNaN(b) || isNaN(c)) {
   console.log(s);
 }
 
+//6
+let currentTimeDate = new Date();
+let hours = currentTimeDate.getHours();
+
+if (hours >= 0 && hours < 5) {
+  console.log("Доброї ночі");
+} else if (hours >= 5 && hours <= 11) {
+  console.log("Доброго ранку");
+} else if (hours > 11 && hours <= 17) {
+  console.log("Доброго дня");
+} else if (hours > 17 && hours <= 23) {
+  console.log("Доброго вечора");
+} else {
+  console.log("Виникла помилка!");
+}
