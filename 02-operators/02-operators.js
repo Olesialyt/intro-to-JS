@@ -63,10 +63,9 @@ console.log(arr); // [4, 2, 1, 6, 3, 2]
 //5
 //Здійснювати перевірку чи введені користувачем значення коректні, в іншому випадку вивести 'Incorrect data‘. Результат обчислення площі трикутника виводити в консоль з точністю 3 знаки після коми (наприклад:  8.42355465 =>  8.424).
 
-const a = parseInt(prompt("Введіть сторону а:"));
-const b = parseInt(prompt("Введіть сторону b:"));
-const c = parseInt(prompt("Введіть сторону c:"));
-
+const a = Number(prompt("Введіть сторону а:"));
+const b = Number(prompt("Введіть сторону b:"));
+const c = Number(prompt("Введіть сторону c:"));
 //5, 4, 3
 if (isNaN(a) || isNaN(b) || isNaN(c)) {
   console.log("Incorrect data");
@@ -86,9 +85,12 @@ if (isNaN(a) || isNaN(b) || isNaN(c)) {
   }
   //площa трикутника
   let r = a + b + c;
-  let s = parseFloat((a * b * c) / (4 * r));
-  //// з точністю 3 знаки після коми !!!!!!
-  console.log(s);
+  let s = parseFloat((a * b * c) / (4 * r)).toFixed(3); // з точністю 3 знаки після коми
+  if (s % 1 != 0) {
+    console.log(s);
+  } else {
+    console.log(parseInt(s));
+  }
 }
 
 //6
