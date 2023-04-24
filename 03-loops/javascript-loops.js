@@ -52,9 +52,7 @@ function typeChecker(el) {
     el.forEach(e => typeChecker(e));
   }
 }
-array.forEach(el => {
-  typeChecker(el);
-});
+array.forEach(el => typeChecker(el));
 
 // console.log(numberArray);
 // console.log(stringArray);

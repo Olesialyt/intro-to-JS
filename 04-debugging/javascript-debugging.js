@@ -32,6 +32,7 @@ function checkAge() {
   }
 }
 checkAge();
+
 //3.
 const calcRectangleArea = (width, height) => {
   if (isNaN(width) || isNaN(height)) {
