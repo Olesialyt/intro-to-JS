@@ -14,8 +14,8 @@ let a = 3;
 let b = 10;
 
 let arr = [];
-for (let i = a; i <= b; ++i) {
-  for (let j = 1; j <= a; ++j) {
+for (let i = 1; i <= b; ++i) {
+  for (let j = 1; j <= i; ++j) {
     arr.push(a);
   }
   ++a;
@@ -38,24 +38,26 @@ const compact = arr => (arr = [...new Set(arr)]);
 // console.log(compact([5, 3, 4, 5, 6, 7, 3]));
 
 //5.
-const newArrays = arr => {
-  for (let i in arr) {
-    console.log(arr[i]);
+// prettier-ignore
+const array = [5, "Limit", 12, "a", "3", 99, 2, [2, 4, 3, "33", "a", "text"], "strong", "broun"];
+let numberArray = [];
+let stringArray = [];
+
+function typeChecker(el) {
+  if (typeof el === "number") {
+    numberArray.push(el);
+  } else if (typeof el === "string") {
+    stringArray.push(el);
+  } else if (Array.isArray(el)) {
+    el.forEach(e => typeChecker(e));
   }
-};
-// newArrays([
-//   5,
-//   "Limit",
-//   12,
-//   "a",
-//   "3",
-//   99,
-//   2,
-//   [2, 4, 3, "33", "a", "text"],
-//   "strong",
-//   "broun",
-// ]);
-// typeof i ==
+}
+array.forEach(el => {
+  typeChecker(el);
+});
+
+// console.log(numberArray);
+// console.log(stringArray);
 
 //6.
 const calc = (a, b, op) => {
