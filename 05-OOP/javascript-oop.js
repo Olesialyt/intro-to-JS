@@ -1,32 +1,33 @@
+//  - Визначте метод перетворення поточного стану об'єкта на символьний рядок (toString()).
+
 //********************************* 1 *********************************
 
-// let x = +prompt("Координати центру кола по x: ");
-// let y = +prompt("Координати центру кола по у: ");
-// let radius = +prompt("Pадіус: ");
-
-// class Circle {
-//   constructor(x, y, radius) {
-//     this._center = { x: x, y: y };
-//     this._radius = radius;
-//   }
-//   get perimeter() {
-//     return this.calcPerimeter();
-//   }
-//   calcPerimeter() {
-//     return 2 * Math.PI * this._radius;
-//   }
-//   static perimeter(radius) {
-//     return 2 * Math.PI * radius;
-//   }
-//     circleCopy() {
-//     return new CircleCopy(...Object.values(this));
-//   }
-//   static circleObject(center, radius) {
-
-//   }
-// }
-
-
+class Circle {
+  constructor(x, y, radius) {
+    this._center = { x: x, y: y };
+    this._radius = radius;
+  }
+  calcPerimeter() {
+    return 2 * Math.PI * this._radius;
+  }
+  static perimeter(radius) {
+    return 2 * Math.PI * radius;
+  }
+  circleCopy() {
+    return new CircleCopy(...Object.values(this));
+  }
+  static circleObject(x, y, radius) {
+    return new Circle(x, y, radius);
+  }
+  isPointInside(x, y) {
+    //prettier-ignore
+    const formula = (x ** 2) + (y ** 2) - (this._radius ** 2);
+    formula <= 0 ? console.log("inside") : console.log("outside");
+  }
+}
+const circle1 = new Circle(0, 0, 5);
+circle1.isPointInside(2, 10);
+console.log(circle1._center);
 // ********************************* 2. *********************************
 
 let mentor = {
@@ -36,7 +37,6 @@ let mentor = {
 };
 const propsCount = currentObject => Object.keys(currentObject).length;
 // console.log(propsCount(mentor));
-
 
 // ********************************* 3. *********************************
 
@@ -69,7 +69,6 @@ class Student extends Person {
 // const stud1 = new Student("Petro", "Petrenko", 2019);
 // console.log(stud1.showFullName("Petrovych"));
 // console.log("Current course: " + stud1.showCourse());
-
 
 //********************************* 4. *********************************
 
