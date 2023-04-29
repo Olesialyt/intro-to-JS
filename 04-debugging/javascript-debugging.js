@@ -23,7 +23,7 @@ function checkAge() {
   const status = prompt("enter your status:");
   if (age < 18 || age > 70) {
     throw `RangeError, a number "out of range" has occurred`;
-  } else if (!name || !age || !status) {
+  } else if (!name.trim() || !age.trim() || !status.trim()) {
     throw "Error, The field is empty! Please enter your age";
   } else if (
     !(status === "адмін" || status === "модератор" || status === "користувач")
@@ -96,10 +96,9 @@ const showUser = id => {
   if (id < 0) {
     throw new RangeError("ID must not be negative", id);
   }
-  const obj = {
+  return {
     id: id,
   };
-  return obj;
 };
 
 const showUsers = ids => {
