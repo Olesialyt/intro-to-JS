@@ -29,6 +29,8 @@ function checkAge() {
     !(status === "адмін" || status === "модератор" || status === "користувач")
   ) {
     throw "EvalError, wrong input";
+  } else {
+    alert("Вам надано доступ до перегляду фільму!");
   }
 }
 checkAge();
@@ -101,18 +103,18 @@ const showUser = id => {
   };
 };
 
+let arrId = [];
 const showUsers = ids => {
-  let arr = [];
   for (const id in ids) {
     let checkedId = showUser(ids[id]);
-    arr.push(checkedId);
+    arrId.push(checkedId);
     console.log(checkedId);
   }
-  console.log(arr);
-  return arr;
+  return arrId;
 };
 try {
-  showUsers([7, -12, 44, 22]);
+  showUsers([7, -44, 22]);
+  showUsers([8, -12, 4, 2]);
 } catch (error) {
   console.error(error.name + ": " + error.message + ": " + error.id);
 }
