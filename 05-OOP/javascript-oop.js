@@ -1,7 +1,4 @@
-//  - Визначте метод перетворення поточного стану об'єкта на символьний рядок (toString()).
-
 //********************************* 1 *********************************
-
 class Circle {
   constructor(x, y, radius) {
     this._center = { x: x, y: y };
@@ -24,10 +21,14 @@ class Circle {
     const formula = (x ** 2) + (y ** 2) - (this._radius ** 2);
     formula <= 0 ? console.log("inside") : console.log("outside");
   }
+  toString() {
+    return `Center is: ${this._center}; Radius is: ${this._radius}`; //???метод перетворення >>> toString()).
+  }
 }
 const circle1 = new Circle(0, 0, 5);
 circle1.isPointInside(2, 10);
 console.log(circle1._center);
+
 // ********************************* 2. *********************************
 
 let mentor = {
@@ -39,8 +40,6 @@ const propsCount = currentObject => Object.keys(currentObject).length;
 // console.log(propsCount(mentor));
 
 // ********************************* 3. *********************************
-
-//, який виводитиме поточний курс студента (від 1 до 6)<<<. Значення курсу визначатиметься як різниця поточного року (визначити самостійно) і року вступу до ВНЗ.
 class Person {
   constructor(name, surname) {
     this._name = name;
@@ -57,12 +56,19 @@ class Student extends Person {
     this._year = year;
   }
   showFullName(midleName) {
-    //polymorphism??
     return `Name is: ${this._name}; Middle name is: ${midleName}; Surname is: ${this._surname}`;
   }
   showCourse() {
-    const date = new Date();
-    return date.getFullYear() - this._year;
+    try {
+      const date = new Date();
+      const course = date.getFullYear() - this._year;
+      if (course < 1 || course > 6) {
+        throw new RangeError("The course number is out of range");
+      }
+      return course;
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
 
@@ -122,9 +128,6 @@ refillableMarker2.print(text);
 
 //********************************* 5. *********************************
 
-// Create several instances of the class (employees) with different salaries, as shown in the example below. Sort the employee salaries with the highest experience in ascending order and output the result in the format: worker_fullName: salary_value
-// Implement dynamic sorting for any number of employee instances of the Worker class.
-
 class Worker {
   #experience = 1.2;
 
@@ -146,6 +149,13 @@ class Worker {
   showSalaryWithExperience() {
     return this.showSalary() * this.#experience;
   }
+  static sort(arr) {
+    //динамiчний??
+    arr = arr.sort((a, b) => a.showExp - b.showExp);
+    arr.forEach(el => {
+      console.log(`${el.fullName}: ${el.showSalaryWithExperience()}`);
+    });
+  }
 }
 
 //instances для класiв:
@@ -156,7 +166,7 @@ console.log("New experience: " + worker1.showExp);
 console.log(
   worker1.fullName + " salary: " + worker1.showSalaryWithExperience()
 );
-worker1.setExp = 1.5; //тобто я можу присвоїти??? до сет
+worker1.setExp = 2.5;
 console.log("New experience: " + worker1.showExp);
 
 let worker2 = new Worker("Tom Tomson", 48, 22);
@@ -167,8 +177,10 @@ console.log(
 );
 
 let worker3 = new Worker("Andy Ander", 29, 23);
-worker3.setExp = 2.5;
+worker3.setExp = 1.5;
 console.log("New experience: " + worker3.showExp);
 console.log(
   worker2.fullName + " salary: " + worker3.showSalaryWithExperience()
 );
+
+Worker.sort([worker1, worker2, worker3]);
