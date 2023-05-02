@@ -150,7 +150,7 @@ class Worker {
     return this.showSalary() * this.#experience;
   }
   static sort(arr) {
-    //динамiчний??
+    //динамiчний???
     arr = arr.sort((a, b) => a.showExp - b.showExp);
     arr.forEach(el => {
       console.log(`${el.fullName}: ${el.showSalaryWithExperience()}`);
