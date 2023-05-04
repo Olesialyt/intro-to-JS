@@ -11,7 +11,7 @@ class Circle {
     return 2 * Math.PI * radius;
   }
   circleCopy() {
-    return new CircleCopy(...Object.values(this));
+    return new CircleCopy(...Object.values(this));//<<<<<<<<<????
   }
   static circleObject(x, y, radius) {
     return new Circle(x, y, radius);
@@ -62,7 +62,7 @@ class Student extends Person {
     try {
       const date = new Date();
       const course = date.getFullYear() - this._year;
-      if (course < 1 || course > 6) {
+      if (course < 1 || course > 6) {//поміняти < 1 <<<<<<<<<<<<<<<<<<<<<<
         throw new RangeError("The course number is out of range");
       }
       return course;
@@ -98,7 +98,7 @@ class RefillableMarker extends Marker {
   constructor(color, inkQuantity) {
     super(color, inkQuantity);
   }
-  print(text) {
+  print(text) { //add super?<<<<<<<<<<<<<<<<
     text.split("").forEach(char => {
       while (this.inkQuantity < 1) {
         // чорнила менше нiж 1 -> викликає метод refill, i "дозаправляє".
@@ -149,9 +149,9 @@ class Worker {
   showSalaryWithExperience() {
     return this.showSalary() * this.#experience;
   }
-  static sort(arr) {
+  static sort(arr) { //<<<<<<<<<<<<<<<<<<<<<помiняти
     //динамiчний???
-    arr = arr.sort((a, b) => a.showExp - b.showExp);
+    arr = arr.sort((a, b) => a.showExp - b.showExp);//change here
     arr.forEach(el => {
       console.log(`${el.fullName}: ${el.showSalaryWithExperience()}`);
     });
@@ -183,4 +183,4 @@ console.log(
   worker2.fullName + " salary: " + worker3.showSalaryWithExperience()
 );
 
-Worker.sort([worker1, worker2, worker3]);
+Worker.sort([worker1, worker2, worker3]);//<<<<<<<<<<<
