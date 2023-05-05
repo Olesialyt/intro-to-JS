@@ -20,8 +20,9 @@ const collectData = e => {
 };
 
 const addData = () => {
-  ///before creating check if not empty!!
+
   const out = document.querySelector(".out");
+  out.innerHTML = "";
 
   const fio = document.createElement("p");
   fio.innerHTML = obj.fio;
@@ -31,14 +32,15 @@ const addData = () => {
 
   const birthday = document.createElement("p");
   birthday.innerHTML = obj.birthday;
-  
+
   const email = document.createElement("p");
   email.innerHTML = obj.email;
 
-  out.append(fio);
-  out.append(phone);
-  out.append(birthday);
-  out.append(email);
+  const elements = [fio, phone, birthday, email];
+
+  for (let i = 0; i < elements.length; i++) {
+    out.append(elements[i]);
+  }
 };
 
 const button = document.querySelector(".btn");
