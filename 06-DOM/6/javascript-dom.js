@@ -1,4 +1,6 @@
 //********************************* 5. *********************************
+//змiнює цiну залежно вiд кольору
+//а також в залежностi вiд таймеру який поставлен на завтра - May 6, 2023 15:00:00.
 
 const color = document.querySelectorAll(".color");
 const shoe = document.querySelectorAll(".shoe");
