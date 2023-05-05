@@ -61,13 +61,14 @@ const changeColor = e => {
     });
 
     if (hasSale) {
+      let priceWithSale = price * 0.5;
       const div = document.createElement("div");
       div.id = "sale";
-      h1.innerHTML = `${price}`;
+      h1.innerHTML = `${priceWithSale}`;
       h1.style.color = "red";
       h1.appendChild(div);
 
-      div.innerHTML = `<strike><h4>${(price = price * 0.5)}</h4></strike><br>
+      div.innerHTML = `<strike><h4>${price}</h4></strike><br>
           <h4 style="font-style: italic;">SALE!</h4><br>`;
       div.appendChild(timeLeftTag);
     } else {
