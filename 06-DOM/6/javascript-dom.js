@@ -1,6 +1,5 @@
 //********************************* 5. *********************************
 
-// Придумати ще 2 варіації, від яких буде залежати ціна товару.???
 const color = document.querySelectorAll(".color");
 const shoe = document.querySelectorAll(".shoe");
 const gradient = document.querySelectorAll(".gradient");
