@@ -1,9 +1,14 @@
-// Для заданої HTML-сторінки:
-// <p id ='text'>I learning JavaScript events!</p> 
-// <div>
-//         <button . . . . . >Change style!</button>
-// </div>
+const text = document.getElementById("text");
 
-// напишіть функцію changeCSS(), яка спрацьовуватиме по кліку на кнопку і 
-// змінюватиме стиль вмісту тега <p>: колір шрифту – оранжевий, розмір шрифту 20px, 
-// шрифт сімейства "Comic Sans MS".
+const object = {
+  color: "orage",
+  fontSize: "20px",
+  fontFamily: "Comic Sans MS",
+};
+
+const changeCSS = () => {
+  let arr = Object.keys(object);
+  arr.forEach(x => {
+    text.style[x] = object[x];
+  });
+};
