@@ -15,7 +15,7 @@ timeLeftTag.id = "time-left";
 timeLeftTag.textContent = "";
 
 //Countdown
-const countDownDate = new Date("May 6, 2023 15:00:00").getTime();
+const countDownDate = new Date("May 7, 2023 15:00:00").getTime();
 const tomorrow = new Date();
 
 let x = setInterval(function () {
