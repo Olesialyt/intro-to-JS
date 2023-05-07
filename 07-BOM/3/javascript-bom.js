@@ -1,6 +1,11 @@
-// Задано сторінку з 3 кнопками і 1 лінкою. Напишіть Javascript код і реалізуйте HTML-сторінку з відповідними подіями на кожному елементові:
+const changeToBrownElement = document.getElementById("changeToBrown");
 
-//         3) 3-я кнопка – при натисненні і утримуванні кнопки колір фону сторінки стає коричневий. При відпусканні – білий.
+changeToBrownElement.addEventListener("mousedown", () => {
+  document.body.style.backgroundColor = "brown";
+});
+changeToBrownElement.addEventListener("mouseup", () => {
+  document.body.style.backgroundColor = "white";
+});
 
 const changeToBlue = () => {
   document.body.style.backgroundColor = "blue";

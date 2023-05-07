@@ -1,2 +1,13 @@
-// Реалізуйте програму, яка відслідковуватиме зміну розміру (ширини і висоти) вікна браузера і виводитиме на поточну сторінку 
-// при її розтязі/стисканні відповідні значення.
+const size = document.getElementById("size");
+size.innerHTML = `Height: ${window.innerHeight}, Width: ${window.innerWidth}`;
+
+window.addEventListener("resize", () => {
+  size.innerHTML = `Height: ${window.innerHeight}, Width: ${window.innerWidth}`;
+});
+
+
+// Придумайте просту гру з використанням цих спрайтів. 
+// На 2-3 дії користувача. (кліки миші, натискання клавіш).
+// Наприклад:
+// - вибір персонажа
+// - стрибок
