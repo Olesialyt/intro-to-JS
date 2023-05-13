@@ -1,11 +1,11 @@
 const btn = document.querySelector(".btn");
 btn.addEventListener("click", function () {
-  alert("I was pressed!");
+  text.innerHTML += `<p>I was pressed!</p>`;
 });
 
 btn.addEventListener("mouseover", function () {
-  alert("Mouse on me!");
+  text.innerHTML += `<p>Mouse on me!</p>`;
 });
 btn.addEventListener("mouseout", function () {
-  alert("Mouse is not on me!");
+  text.innerHTML += `<p>Mouse is not on me!</p>`;
 });

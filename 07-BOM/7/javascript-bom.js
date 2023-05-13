@@ -47,6 +47,7 @@ const createList = citiesArr => {
     option.innerHTML = el;
     cities.append(option);
   });
+
 };
 
 country.addEventListener("change", e => {
