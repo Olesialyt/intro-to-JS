@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Smart House</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css"/>
+    <script src="https://kit.fontawesome.com/5d82e37553.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Smart House</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Living room</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Bath room</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">Kitchen</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--hidden for side section-->
+    <div class="card card-to-do visible" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title" id="to-do-title">To do list</h5>
+                        <!-- когда click на add появиться этот search -->
+          <p class="card-text">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                Default checkbox 
+              </label><span class="due-checkbox"><br>  due 24.05</span>
+              <a href="#" class="btn btn-delete"></a>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+              <label class="form-check-label" for="flexCheckChecked">
+                Checked checkbox.
+              </label>
+            </div>
+          </p>
+          <a href="#" class="btn btn-dark btn-to-do"> Add
+        </a>
+      </div>
+    </div>
+    <!-- main section -->
+    <section>
+      <div class="row">
+            <!-- side -->
+        <div class="col-md-4" style="min-height: 800px">
+            <img
+              src="photo/my-photo.jpg"
+              alt="mdo"
+              width="32"
+              height="32"
+              class="rounded-circle me-2"
+              width="40"
+              height="32"
+            />
+  
+            <span id="time" class="fs-4">Time</span></a
+          >
+          <hr />
+        </div>
+        <!-- main -->
+        <div class="col-md-8">
+            <div class="row">
+                    <div class="card card-music-player" style="width: 15rem;">
+                        <img src="photo/music-player.png" class="card-img-top" alt="music player" style="width:6rem">
+                        <div class="card-body">
+                          <p class="card-text">Music player</p>
+                        </div>
+                    </div>
+                    <div class="card card-thermostat" style="width: 16rem;">
+                        <div class="slider-lamp-value">50</div>
+                        <img src="photo/thermostat.png" class="card-img-top" alt="thermostat" style="width:10rem">
+                        <div class="card-body">
+                          <p class="card-text">Thermostat</p>
+                          <div id="slider-lamp" class="slider">
+                            <input type="range" min="0" max="50" value="22" />
+                            <progress max="50" value="22"></progress>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card card-to-do-list" style="width: 15rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">To do list</h5>
+                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                          <a href="#" class="btn btn-dark"><i class="bi bi-plus-lg"></i>Add</a>
+                        </div>
+                    </div>
+              </div>
+        </div>
+      </div>
+    </section>
+    <!--my javascript-->
+    <script src="javascript/javascript.js"></script>
+    <!-- <script src="javascript/toDoList.js"></script>
+    <script src="javascript/smart-house.js"></script>
+    <script src="javascript/MusicPlayer.js"></script> -->
+    <!-- javascript bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+    <!-- popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+      integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+      integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
+
+
+
+
+
+
+
