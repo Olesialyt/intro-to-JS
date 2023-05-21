@@ -41,7 +41,8 @@
       integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
       crossorigin="anonymous"
     ></script>
-    <!-- my javascript  -->
+    <script type="module" src="javascript/datekiper.js"></script>
+    <!--------- my javascript --------->
     <script type="module" src="javascript/main.js"></script>
     <script type="module" src="javascript/toDoList.js"></script>
     <script type="module" src="javascript/thermostat.js"></script>
@@ -50,58 +51,128 @@
     <script type="module" src="javascript/lamp.js"></script>
   </head>
   <body>
-    <!-- navbar -->
+    <!--------- navbar --------->
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Smart House</a>
+        <a class="navbar-brand nav-link default" href="#">Smart House</a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#">Music player</a>
+              <a class="nav-link music" href="#">Music player</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Thermostat</a>
+              <a class="nav-link thermostat" href="#">Thermostat</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">To do list</a>
+              <a class="nav-link to-do" href="#">To do list</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">Lamp</a>
+              <a class="nav-link lamp">Lamp</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <!--hidden for side section-->
-    <!--text-center-->
-    <div class="card onside default-display hidden">
+    <!--hidden card for side section-->
+    <!--------- default --------->
+    <div class="card onside default hidden">
       <div class="card-header">Weather</div>
       <div class="card-body">
         <h1 class="card-title"></h1>
-        <!-- icon -->
-        <p class="card-text">...</p>
+        <!-- icon --> 
+        <p class="card-text">Getting weather...</p>
       </div>
     </div>
-    <!-- -------------------- -->
-    <div class="card text-center onside card-thermostat-onside">
-      <div class="card-header">Thermostat</div>
-      <div class="card-body">
-        <h1 class="card-title"></h1>
-        <h5 class="card-text">...</h5>
-        <a href="#" class="btn btn-dark btn-thermostat">
-          <i class="bi bi-brightness-high"></i>
-        </a>
-        <a href="#" class="btn btn-dark btn-thermostat">
-          <i class="bi bi-droplet"></i>
-        </a>
-        <a href="#" class="btn btn-dark btn-thermostat">
-          <i class="bi bi-wind"></i>
-        </a>
+    <!--------- thermostat --------->
+    <div class="card text-center onside thermostat hidden">
+      <img src="photo/thermost.jpg" class="card-img" alt="lamp" />
+      <div class="card-img-overlay">
+        <h5 class="card-title">Thermostat</h5>
+        <h5 class="card-title"></h5>
+        <h1 class="card-text"></h1>
       </div>
-      <!-- <div class="card-footer text-body-secondary">2 days ago</div> -->
     </div>
-    <!-- -------------------- -->
-    <div class="card onside card-to-do-onside hidden">
+    <!--------- lamp --------->
+    <div class="card text-bg-dark onside lamp hidden">
+      <img src="photo/lamp_.jpg" class="card-img" alt="lamp" />
+      <div class="card-img-overlay">
+        <h5 class="card-title">Lamp</h5>
+        <p class="card-text d-flex justify-content-center">
+          <div class="text-center">
+            <p class="fs-4">
+              Power usage is <span class="fw-bold" id="lamp-power">0%</span>
+            </p>
+            <!-- data-state="high" -->
+            <div class="text-center">
+              <a
+                href="#"
+                class="btn btn-outline-light" id="power-usage"
+                ><i class="bi bi-battery-half"></i></a>
+              <p class="fw-lighter">Count power usage</p>
+            </div>
+          </div>
+        </p>
+        <div class="text-center">
+          <p class="fs-4">
+            Ligths is <span class="fw-bold" id="lamp-state">0%</span>
+          </p>
+        </div>
+        <div class="d-flex justify-content-evenly flex-row">
+          <div class="text-center">
+            <a
+              href="#"
+              class="btn btn-outline-light lamp-state"
+              data-state="high"
+              ><i class="bi bi-brightness-high-fill"></i
+            ></a>
+            <p class="fw-lighter">high</p>
+          </div>
+          <div class="text-center">
+            <a
+              href="#"
+              class="btn btn-outline-light lamp-state"
+              data-state="avg"
+              ><i class="bi bi-brightness-alt-high-fill"></i
+            ></a>
+            <p class="fw-lighter">average</p>
+          </div>
+          <div class="text-center">
+            <a
+              href="#"
+              class="btn btn-outline-light lamp-state"
+              data-state="low"
+              ><i class="bi bi-brightness-alt-low-fill"></i
+            ></a>
+            <p class="fw-lighter">low</p>
+          </div>
+          <div class="text-center">
+            <a
+              href="#"
+              class="btn btn-outline-light lamp-state"
+              data-state="off"
+              ><i class="bi bi-brightness-alt-low"></i
+            ></a>
+            <p class="fw-lighter">off</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--------- music player --------->
+    <div class="card onside music hidden">
+      <img src="photo/music-player.jpeg" class="card-img" alt="lamp" />
+      <div class="card-img-overlay">
+        <h5 class="card-title">Music Player</h5>
+        <p class="card-text">
+          This is a wider card with supporting text below as a natural lead-in
+          to additional content. This content is a little bit longer.
+        </p>
+        <p class="card-text"><small>Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+
+    <!--------- to do list --------->
+    <div class="card onside to-do hidden">
       <div class="card-body">
         <form>
           <div class="row mb-3">
@@ -109,13 +180,13 @@
               >Title</label
             >
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputTitle" />
+              <input type="text" class="form-control" name="inputTitle" id="inputTitle" />
             </div>
           </div>
           <div class="row mb-3">
             <label for="inputTask" class="col-sm-2 col-form-label">Task</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputTask" />
+              <input type="text" class="form-control" name="inputTask" id="inputTask" />
             </div>
           </div>
           <div class="row mb-3">
@@ -124,11 +195,11 @@
             >
             <div class="col-sm-10">
               <div class="row form-group">
-                <div class="col-sm-6">
+                <div class="col-sm-10">
                   <div class="input-group date" id="datepicker">
-                    <input type="text" class="form-control" id="inputDue" />
+                    <input type="text" class="form-control" name="inputDue" id="inputDue" />
                     <span class="input-group-append">
-                      <span class="input-group-text bg-white">
+                      <span class="input-group-text bg-white btn-date">
                         <i class="fa fa-calendar"></i>
                       </span>
                     </span>
@@ -143,13 +214,12 @@
           <p id="input-warning"></p>
         </form>
         <hr />
-        <!--tasks to do>>>>>-->
-        <div class="list-group"></div>
+        <!--tasks to do -->
+        <div id="list-group"></div>
       </div>
     </div>
     <section>
       <div class="row">
-        <!-- side -->
         <div class="col-md-4">
           <img
             src="photo/my-photo.jpg"
@@ -165,7 +235,8 @@
         <!-- main -->
         <div class="col-md-8">
           <div class="row">
-            <div class="card card-music-player" style="width: 15rem">
+            <!--------- music player --------->
+            <div class="card music main" style="width: 15rem">
               <img
                 src="photo/music-player.png"
                 class="card-img-top"
@@ -179,8 +250,9 @@
                 <i class="bi bi-skip-end-fill"></i>
               </div>
             </div>
-            <div class="card card-thermostat main" style="width: 16rem">
-              <div class="slider-lamp-value">50</div>
+            <!--------- thermostat --------->
+            <div class="card thermostat main" style="width: 16rem">
+              <div class="slider-thermostat-value">0</div>
               <img
                 src="photo/thermostat.png"
                 class="card-img-top"
@@ -189,26 +261,27 @@
               />
               <div class="card-body">
                 <h5 class="card-title">Thermostat</h5>
-                <div id="slider-lamp" class="slider">
+                <div id="slider-thermostat" class="slider thermostat">
                   <input type="range" min="0" max="50" value="22" />
                   <progress max="50" value="22"></progress>
                 </div>
               </div>
             </div>
-            <!-- <----- -->
-            <div class="card card-to-do main" style="width: 15rem">
+            <!--------- to do list --------->
+            <div class="card to-do main" style="width: 15rem">
               <div class="card-body">
                 <h5 class="card-title">To do list</h5>
                 <p class="card-text" id="theLastTask"></p>
-                <a href="#" class="btn btn-to-do-list btn-dark">
+                <a href="#" class="btn btn-dark">
                   <i class="bi bi-plus-lg"></i>
                   Add</a
                 >
               </div>
             </div>
           </div>
+          <!--------- lamp --------->
           <div class="row">
-            <div class="card card-lamp main" style="width: 15rem">
+            <div class="card lamp main" style="width: 15rem">
               <img
                 src="photo/lamp.png"
                 class="card-img-top"
@@ -229,15 +302,18 @@
                 </div>
               </div>
             </div>
+                <!-- weather -->
+            <div class="card default main" style="width: 32rem">
+              <div class="card-body text-center">
+                <h5 class="card-title">Weather</h5>
+                  <p class="card-text" id="message-weather">Todays weather is sunny</p>
+                  <a href="#" class="btn btn-dark"><i class="bi bi-cloud-haze2-fill"></i></a>
+              </div>
+            </div>
           </div>
+        </div>
         </div>
       </div>
     </section>
-    <!-- javascript for calendar displaying -->
-    <script type="text/javascript">
-      $(function () {
-        $("#datepicker").datepicker();
-      });
-    </script>
   </body>
 </html>

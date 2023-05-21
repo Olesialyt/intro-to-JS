@@ -1,41 +1,76 @@
-import { handleDisplayingToDo } from "./toDoList.js";
-import { handleDisplayingThermostat } from "./thermostat.js";
-import { handleDisplayingDefault } from "./default.js";
+export class Appliances {
+  constructor(name, level, id) {
+    this._name = name;
+    this._level = level;
+  }
 
-// navBar
-export const onsideCollection = () => {
-  $(".onside").each(function () {
-    if (!$(this).hasClass("hidden")) {
-      $(this).addClass("hidden");
+  set level(percentage) {
+    switch (percentage) {
+      case "off":
+        this._level = "0%";
+        break;
+      case "low":
+        this._level = "25%";
+        break;
+      case "avg":
+        this._level = "50%";
+        break;
+      case "high":
+        this._level = "100%";
+        break;
+      default:
+        this._level = "0%";
+    }
+  }
+
+  get level() {
+    return this._level;
+  }
+
+}
+//handling displaying card onside 
+const navLink = $(".nav-link");
+const onside = $(".onside");
+const main = $(".card.main");
+let classToCheck = 0;
+
+const classToCheckFind = e => {
+  const classes = ["thermostat", "lamp", "to-do", "default", "music"];
+  classes.forEach(el => {
+    if ($(e.target).hasClass(el) || $(e.currentTarget).hasClass(el)) {
+      classToCheck = el;
     }
   });
+  // each el in onside => add class hidden  so that no element is diplayed onside
 };
 
-const navLink = $(".nav-link");
-const handleNavLink = e => {
-  navLink.removeClass("active"); //remove active from each el
+function removeHiddenClass(classToCheck) {
+  onside.addClass("hidden");
+  $(".onside").each(function () {
+    if ($(this).hasClass(classToCheck)) {
+      $(this).removeClass("hidden");
+    }
+  });
+}
+
+const handleOnside1 = e => {
+  navLink.removeClass("active");
   $(e.target).addClass("active");
-
-  let text = $(e.target).text();
-  switch (text) {
-    case "Smart House":
-      handleDisplayingDefault();
-      break;
-    case "Thermostat":
-      handleDisplayingThermostat();
-      break;
-    case "To do list":
-      handleDisplayingToDo();
-      break;
-    case "Lamp":
-      handleDisplayingLamp();
-      break;
-    default:
-      handleDisplayingDefault();
-      break;
-  }
+  classToCheckFind(e);
+  removeHiddenClass(classToCheck);
 };
-navLink.on("click", handleNavLink);
+const handleOnside2 = e => {
+  classToCheckFind(e);
+  navLink.removeClass("active");
+  navLink.each(function () {
+    if ($(this).hasClass(classToCheck)) {
+      $(this).addClass("active");
+    }
+  });
+  removeHiddenClass(classToCheck);
+};
+navLink.on("click", handleOnside1);
+main.on("click", handleOnside2);
 
 // displaying time
 let currentTime = "";
@@ -52,17 +87,27 @@ $(document).ready(function () {
   }, 1000);
 });
 
-// main class for all appliances
-export class Appliances {
-  constructor() {
-    this.power = false; //on/off
-  }
-  powerOn() {
-    this.power = true;
-    $(body).css("backgroundColor", "White");
-  }
-  powerOff() {
-    this.power = false;
-    $(body).css("backgroundColor", "Black");
-  }
-}
+
+
+
+// class MusicPlayer extends Appliances {
+//   static music = JSON.parse(localStorage.getItem("tasks")) || [];
+//   constructor(name) {
+//     super(name, level);
+//     ///
+//     this.currentSong = currentSong;
+//     this.isPlaying = isPlaying;
+//   }
+//   play() {
+//     audio.play();
+//   }
+//   stop() {
+//     audio.stop();
+//   }
+//   skipToNextSong() {}
+//   volume() {}
+// }
+
+//////////////////////////
+
+// localStorage.setItem("light", JSON.stringify(Lamp.light));

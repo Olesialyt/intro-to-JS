@@ -1,18 +1,8 @@
-import { onsideCollection } from "./main.js";
-
-const navbarBrand = $(".navbar-brand");
-const defaultCard = $(".default-display");
+const defaultCard = $(".default.onside");
 const cardTitle = defaultCard.find(".card-title");
 const cardText = defaultCard.find(".card-text");
 
-export const handleDisplayingDefault = () => {
-  onsideCollection();
-  defaultCard.removeClass("hidden");
-};
-navbarBrand.on("click", handleDisplayingDefault);
-
 let temperature = 0;
-let description = "";
 
 // get current location
 const options = {
@@ -33,10 +23,9 @@ function success(pos) {
   )
     .then(res => res.json())
     .then(data => {
-
       let { sunset, sunrise } = data.current;
       const { description } = data.current.weather[0];
-
+      $("#message-weather").html(description);
       temperature = Math.ceil(data.current["temp"]);
 
       cardTitle.html(`${temperature}&#8451;`);
@@ -46,36 +35,36 @@ function success(pos) {
         new Date().getHours() <= new Date(sunrise * 1000).getHours()
       ) {
         cardText.html("Night");
-        cardText.prepend(
-          `<i class="bi bi-moon-stars-fill" style="margin: 1rem"></i>`
+        cardTitle.append(
+          `<i class="bi bi-moon-stars-fill" style="margin: 1.5rem"></i>`
         );
       } else if (description === "few clouds") {
-        cardText.prepend(`
+        cardTitle.append(`
           <div class="partly_cloudy">
             <div class="partly_cloudy__sun"></div>
             <div class="partly_cloudy__cloud"></div>
           </div>
         `);
       } else if (description.includes("clouds")) {
-        cardText.prepend(`<div class="cloudy"></div>`);
+        cardTitle.append(`<div class="cloudy"></div>`);
       } else if (description.includes("rain")) {
-        cardText.prepend(`
+        cardTitle.append(`
           <div class="rainy">
             <div class="rainy__cloud"></div>
             <div class="rainy__rain"></div>
           </div>
         `);
       } else if (description.includes("thunderstorm")) {
-        cardText.prepend(`
+        cardTitle.append(`
           <div class="thundery">
             <div class="thundery__cloud"></div>
             <div class="thundery__rain"></div>
           </div>
         `);
       } else if (description === "clear sky") {
-        weather.prepend(`<div class="sunny"></div>`);
+        cardTitle.append(`<div class="sunny"></div>`);
       } else {
-        cardText.prepend(`
+        cardTitle.append(`
           <div class="partly_cloudy">
             <div class="partly_cloudy__sun"></div>
             <div class="partly_cloudy__cloud"></div>

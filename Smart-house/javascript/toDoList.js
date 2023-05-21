@@ -1,17 +1,6 @@
-import { onsideCollection } from "./main.js";
-
-const cardToDo = $(".card-to-do-onside");
-const cardToDoMain = $(".card-to-do.main");
 const form = $("form");
-const list = $(".list-group");
-
-export const handleDisplayingToDo = () => {
-  onsideCollection();
-  cardToDo.removeClass("hidden");
-};
-cardToDoMain.on("click", handleDisplayingToDo);
-
-class ToDoList {
+const listGroup = $("#list-group");
+export class ToDoList {
   static tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
   static addTasks(taskInstance) {
@@ -29,13 +18,13 @@ class ToDoList {
   }
 
   static getFromLocalStorage() {
-    ToDoList.tasks.forEach(el => {
+    ToDoList.tasks.forEach(function (el) {
       ToDoList.createTaskDom(el);
     });
   }
 
   static createTaskDom({ title, dueDate, task, id, isChecked }) {
-    list.append(`<a href="#" class="list-group-item list-group-item-action" aria-current="true">
+    listGroup.append(`<a href="#" class="list-group-item list-group-item-action" aria-current="true">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">${title}</h5>
       <small>due ${dueDate}</small>
@@ -48,16 +37,18 @@ class ToDoList {
     </div>
   </a>`);
     $("#theLastTask").html("");
-    $("#theLastTask").html(`${title}: <small>${task}</small>`);
+    $("#theLastTask").html(
+      `${title}: <small>${task}</small> <br> <i>due ${dueDate}</i>`
+    );
   }
 }
 
 form.on("submit", e => {
   e.preventDefault();
 
-  const title = form.find("input[name='inputTitle']").val();
-  const task = form.find("input[name='inputTask']").val();
-  const dueDate = form.find("input[name='inputDue']").val();
+  const title = form.find("#inputTitle").val();
+  const task = form.find("#inputTask").val();
+  const dueDate = form.find("#inputDue").val();
 
   if (!(title && task && dueDate) || new Date(dueDate) < Date.now()) {
     return;
@@ -74,27 +65,27 @@ if (localStorage.getItem("tasks")) {
   ToDoList.getFromLocalStorage();
 }
 
-let checkboxes = $("input[type='checkbox']");
+// let checkboxes = $("input[type='checkbox']");
 
 //????????????
-checkboxes.on("change", function () {
-  if ($(this).is(":checked")) {
-    const taskId = $(this).data("id");
-    ToDoList.tasks.forEach(task => {
-      if (task.id === taskId) {
-        task.isChecked = true;
-      }
-    });
-  } else {
-    const taskId = $(this).data("id");
-    ToDoList.tasks.forEach(task => {
-      if (task.id === taskId) {
-        task.isChecked = false;
-      }
-    });
-  }
+// checkboxes.on("change", function () {
+//   if ($(this).is(":checked")) {
+//     const taskId = $(this).data("id");
+//     ToDoList.tasks.forEach(task => {
+//       if (task.id === taskId) {
+//         task.isChecked = true;
+//       }
+//     });
+//   } else {
+//     const taskId = $(this).data("id");
+//     ToDoList.tasks.forEach(task => {
+//       if (task.id === taskId) {
+//         task.isChecked = false;
+//       }
+//     });
+//   }
 
-  localStorage.setItem("tasks", JSON.stringify(ToDoList.tasks));
-});
+//   localStorage.setItem("tasks", JSON.stringify(ToDoList.tasks));
+// });
 
 // ищу в локал сторадж и по id меняю
