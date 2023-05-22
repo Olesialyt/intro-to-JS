@@ -1,6 +1,9 @@
 /* Option 2: Import via CSS */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
 /* icons */
+.color {
+  background-color: #0c0d16;
+}
 .mx-5 {
   margin: 2rem;
   font-size: 1rem;
@@ -10,9 +13,7 @@
   margin-bottom: 0.5rem;
   background-color: #f5d698;
 }
-body {
-  background-color: #0c0d16;
-}
+
 section {
   margin-top: 3.5rem;
 }
@@ -220,11 +221,3 @@ section .to-do {
   }
 }
 
-/* // `lg` applies to medium devices (tablets, less than 992px)
-@media (max-width: 991.98px) { ... }
-
-// `xl` applies to large devices (desktops, less than 1200px)
-@media (max-width: 1199.98px) { ... }
-
-// `xxl` applies to x-large devices (large desktops, less than 1400px)
-@media (max-width: 1399.98px) { ... } */

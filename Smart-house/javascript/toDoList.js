@@ -18,7 +18,7 @@ export class ToDoList {
   }
 
   static getFromLocalStorage() {
-    ToDoList.tasks.forEach(function (el) {
+    ToDoList.tasks.forEach(el => {
       ToDoList.createTaskDom(el);
     });
   }
@@ -31,9 +31,12 @@ export class ToDoList {
     </div>
     <div class="d-flex w-100 justify-content-between"> 
       <label class="mb-1">${task}</label>
+      <div>
+      <i class="delete-task bi bi-x-lg" id="${id}"></i>
       <input class="me-1" type="checkbox" value="" data-id="${id}" ${
       isChecked ? "checked" : ""
     } />
+      </div>
     </div>
   </a>`);
     $("#theLastTask").html("");
@@ -65,6 +68,21 @@ if (localStorage.getItem("tasks")) {
   ToDoList.getFromLocalStorage();
 }
 
+const handleDelete = e => {
+  const taskId = parseInt(e.target.id);
+  ToDoList.tasks = ToDoList.tasks.filter(el => el.id !== taskId);
+
+  ToDoList.tasks.forEach(el => {
+    ToDoList.createTaskDom(el);
+  });
+  console.log(ToDoList.tasks);
+  localStorage.removeItem("tasks");
+  localStorage.setItem("tasks", JSON.stringify(ToDoList.tasks));
+};
+
+if ($(".delete-task")) {
+  $(".delete-task").on("click", handleDelete);
+}
 // let checkboxes = $("input[type='checkbox']");
 
 //????????????

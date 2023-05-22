@@ -4,13 +4,12 @@ let cardThermostatText = cardThermostat.find(".card-text");
 let thermostatValue = 0;
 
 // moving slider of thermostat
-let slider = $("#slider-thermostat input");
-let progressBar = $("#slider-thermostat progress");
-let output = $(".slider-thermostat-value");
+const slider = $("#slider-thermostat input");
+const progressBar = $("#slider-thermostat progress");
+const output = $(".slider-thermostat-value");
 output.html(slider.val()); //innerHTML = slider.value;
 cardThermostatText.html(slider.val());
 
-let mes = "";
 class Thermostat extends Appliances {
   static temperature = JSON.parse(localStorage.getItem("temp")) || [];
 
@@ -59,9 +58,12 @@ slider.on("input", function () {
   } else {
     newInstance.message = "Temperature is on a normal level";
   }
+
   newInstance.displayMessage();
+
   localStorage.setItem("temp", JSON.stringify(Thermostat.temperature));
 });
+
 if (localStorage.getItem("light")) {
   Thermostat.displayTemp();
 }

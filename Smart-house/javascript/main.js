@@ -46,42 +46,28 @@ const classToCheckFind = e => {
   // each el in onside => add class hidden  so that no element is diplayed onside
 };
 
-function removeHiddenClass(classToCheck) {
-  onside.addClass("hidden");
-  $(".onside").each(function () {
-    if ($(this).hasClass(classToCheck)) {
-      $(this).removeClass("hidden");
-      setTimeout(function() {
-        $(this).addClass("visible");
-      }, 10);
-    }
-  });
-}
-
-const handleOnside1 = e => {
+const handleOnside = (e) => {
   navLink.removeClass("active");
-  $(e.target).addClass("active");
   classToCheckFind(e);
-  removeHiddenClass(classToCheck);
-};
-const handleOnside2 = e => {
-  classToCheckFind(e);
-  navLink.removeClass("active");
   navLink.each(function () {
     if ($(this).hasClass(classToCheck)) {
       $(this).addClass("active");
     }
   });
-  removeHiddenClass(classToCheck);
+  onside.removeClass("visible").addClass("hidden");
+  onside.filter(`.${classToCheck}`).removeClass("hidden").addClass("visible");
 };
-navLink.on("click", handleOnside1);
-main.on("click", handleOnside2);
+
+navLink.on("click", handleOnside);
+main.on("click", handleOnside);
+
+
 
 // displaying time
 let currentTime = "";
 
-$(document).ready(function () {
-  setInterval(function () {
+$(document).ready(() => {
+  setInterval(() => {
     const date = new Date();
     const hours = date.getHours();
     const minutes = date.getMinutes();

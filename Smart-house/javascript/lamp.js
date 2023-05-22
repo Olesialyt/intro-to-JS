@@ -1,8 +1,9 @@
 import { Appliances } from "./main.js";
 
 const handleSwitch = () => {
-  console.log("black");
+  $("body").toggleClass("color");
 };
+
 $("[role='switch']").on("change", handleSwitch);
 
 class Lamp extends Appliances {
@@ -26,8 +27,9 @@ class Lamp extends Appliances {
     return this._level;
   }
   static countPowerUsage() {
-    let totalPowerUsage = 0;
     const lampPower = 60;
+    let totalPowerUsage = 0;
+
     for (let i = 0; i < Lamp.light.length; i++) {
       const currentLight = Lamp.light[i];
       const nextLight = Lamp.light[i + 1];
@@ -64,7 +66,10 @@ if (localStorage.getItem("light")) {
 
 $(".lamp-state").on("click", handleLampState);
 
-$("#power-usage").on("click", function () {
+$("#power-usage").on("click", () => {
   Lamp.countPowerUsage();
 });
 Lamp.countPowerUsage();
+Lamp.light.forEach(el => {
+  console.table(el);
+});
