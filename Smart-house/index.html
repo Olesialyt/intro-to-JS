@@ -49,6 +49,7 @@
     <script type="module" src="javascript/default.js"></script>
     <script type="module" src="javascript/speech-reco.js"></script>
     <script type="module" src="javascript/lamp.js"></script>
+    <!-- <script type="module" src="javascript/MusicPlayer.js"></script> -->
   </head>
   <body>
     <!--------- navbar --------->
@@ -80,12 +81,15 @@
       <div class="card-body">
         <h1 class="card-title"></h1>
         <!-- icon --> 
-        <p class="card-text">Getting weather...</p>
+        <div class="text-center">
+          <span class="visually-hidden card-text" id="getting-weather">Getting weather...</span>
+          <div class="spinner-border" role="status"></div>
+        </div>
       </div>
     </div>
     <!--------- thermostat --------->
-    <div class="card text-center onside thermostat hidden">
-      <img src="photo/thermost.jpg" class="card-img" alt="lamp" />
+    <div class="card text-bg-dark text-center onside thermostat hidden">
+      <img src="photo/thermost.jpeg" class="card-img" alt="lamp" />
       <div class="card-img-overlay">
         <h5 class="card-title">Thermostat</h5>
         <h5 class="card-title"></h5>
@@ -94,7 +98,7 @@
     </div>
     <!--------- lamp --------->
     <div class="card text-bg-dark onside lamp hidden">
-      <img src="photo/lamp_.jpg" class="card-img" alt="lamp" />
+      <img src="photo/lamp_.jpeg" class="card-img" alt="lamp" />
       <div class="card-img-overlay">
         <h5 class="card-title">Lamp</h5>
         <p class="card-text d-flex justify-content-center">
@@ -164,10 +168,18 @@
       <div class="card-img-overlay">
         <h5 class="card-title">Music Player</h5>
         <p class="card-text">
-          This is a wider card with supporting text below as a natural lead-in
-          to additional content. This content is a little bit longer.
+          <img src="./photo/def-img.jpg" class="rounded  mx-auto d-block" id="audio-img1" alt="" style="height: 100px; width: 100px;">
         </p>
-        <p class="card-text"><small>Last updated 3 mins ago</small></p>
+        <div class="text-center mx-auto p-2 d-flex justify-content-evenly flex-row">
+          <button type="button" class="btn btn-outline-light" id="skip-start"><i class="bi bi-skip-start-circle-fill"></i></button>
+          <h6 class="text-center" id="audio-title1">Title</h6>
+          <button type="button" class="btn btn-outline-light" id="skip-end"><i class="bi bi-skip-end-circle-fill"></i></button>
+        </div>
+        <p class="card-text d-flex justify-content-center"><audio controls>
+          <!-- <source src="./photo/audio.ogg" type="audio/ogg"> -->
+          <source id="audio" src="" type="audio/mpeg">
+          Your browser does not support the audio tag.
+        </audio></p>
       </div>
     </div>
 
@@ -239,7 +251,7 @@
             <div class="card music main" style="width: 15rem">
               <img
                 src="photo/music-player.png"
-                class="card-img-top"
+                class="card-img-top mt-5"
                 alt="music player"
                 style="width: 6rem"
               />
@@ -255,7 +267,7 @@
               <div class="slider-thermostat-value">0</div>
               <img
                 src="photo/thermostat.png"
-                class="card-img-top"
+                class="card-img-top mt-5"
                 alt="thermostat"
                 style="width: 10rem"
               />
@@ -272,10 +284,10 @@
               <div class="card-body">
                 <h5 class="card-title">To do list</h5>
                 <p class="card-text" id="theLastTask"></p>
-                <a href="#" class="btn btn-dark">
-                  <i class="bi bi-plus-lg"></i>
-                  Add</a
-                >
+                  <a href="#" class="btn btn-dark">
+                    <i class="bi bi-plus-lg"></i>
+                    Add</a
+                  >
               </div>
             </div>
           </div>
@@ -306,8 +318,8 @@
             <div class="card default main" style="width: 32rem">
               <div class="card-body text-center">
                 <h5 class="card-title">Weather</h5>
-                  <p class="card-text" id="message-weather">Todays weather is sunny</p>
-                  <a href="#" class="btn btn-dark"><i class="bi bi-cloud-haze2-fill"></i></a>
+                  <p class="card-text p-2" id="message-weather">Todays weather is sunny</p>
+                  <a href="#" class="btn btn-outline-dark fs-1 border-0 btn-lg"><i class="bi bi-cloud-haze2-fill"></i></a>
               </div>
             </div>
           </div>

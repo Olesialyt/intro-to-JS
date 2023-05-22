@@ -24,9 +24,9 @@ function handleResult(e) {
     let command = e.results[e.results.length - 1][0].transcript;
     //reacting on words turn on/off
     if (/turn\soff/i.test(command)) {
-      $(body).css("backgroundColor", "Black");
+      $('body').css("backgroundColor", "#0c0d16");
     } else if (/turn\son/i.test(command)) {
-      $(body).css("backgroundColor", "White");
+      $('body').css("backgroundColor", "White");
     }
   } catch (e) {
     console.log(e.error);

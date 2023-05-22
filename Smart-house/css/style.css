@@ -7,7 +7,8 @@
   font-weight: normal;
 }
 .list-group-item {
-  background-color: #ebae4c;
+  margin-bottom: 0.5rem;
+  background-color: #f5d698;
 }
 body {
   background-color: #0c0d16;
@@ -25,7 +26,6 @@ section {
 
 section .to-do {
   width: 100%;
-  height: 100%;
   background-size: cover;
   background-position: center center;
   background-repeat: repeat;
@@ -53,14 +53,24 @@ section .to-do {
 }
 /* hidden card on side => a1c6ff */
 .hidden {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s linear, visibility 0s 0.5s;
 }
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s linear;
+}
+
 .onside {
   width: calc(33.33% - 2.2rem);
   margin-top: 5rem;
   position: absolute;
   margin-left: 1rem;
 }
+
 #input-warning {
   margin-top: 0.5rem;
   color: rgb(188, 47, 0);
@@ -77,16 +87,12 @@ section .to-do {
   display: flex;
   align-items: center;
 }
-.card.music.main img {
-  margin-top: 2rem;
-}
-.card.thermostat.main img {
-  margin-top: -5rem;
-}
+
 .col-md-8 .row .card {
   margin: 1rem 0 0 1rem;
 }
-.card.onside.default, .main {
+.card.onside.default,
+.main {
   background-color: #a1c6ff;
 }
 .card.onside.default .card-body {
@@ -122,7 +128,6 @@ section .to-do {
 
 .card.thermostat.main {
   width: 100%;
-  height: 100%;
   background-size: cover;
   background-position: center center;
   background-repeat: repeat;
@@ -147,7 +152,7 @@ section .to-do {
 /* slider */
 .slider {
   position: relative;
-  width: 15rem;
+  width: 13rem;
   height: 0.5rem;
 }
 
@@ -155,7 +160,7 @@ section .to-do {
   position: absolute;
   left: -0.1rem;
   top: 0;
-  width: 15.5rem;
+  width: 13.5rem;
   height: 0.5rem;
   -webkit-appearance: none;
   background: transparent;
@@ -176,7 +181,7 @@ section .to-do {
   transform: scale(1.1);
 }
 .slider progress {
-  width: 15rem;
+  width: 13rem;
   height: 0.5rem;
   -webkit-appearance: none;
   position: absolute;
@@ -185,15 +190,16 @@ section .to-do {
   overflow: hidden;
 }
 .slider progress::-webkit-progress-bar {
-  background: var(--lamp-level-1); /*color of background of track */
+  background: transparent; /*color of background of track */
 }
 .slider progress::-webkit-progress-value {
   background: black; /*value color*/
 }
 .slider-thermostat-value {
+  position: absolute;
   word-wrap: normal;
   color: white;
-  margin-top: 6rem;
+  margin-top: 6.7rem;
   margin-left: -0.5rem;
   font-family: Poppins, serif;
   height: 1.25rem;

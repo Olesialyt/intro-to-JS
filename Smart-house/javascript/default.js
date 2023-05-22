@@ -16,13 +16,19 @@ function success(pos) {
   let latitude = crd.latitude;
   let longitude = crd.longitude;
   let apiKey = "d9bbc324b2ef346c87b95c66d9c2de05";
-
+  let spinner = `<div class="spinner-border" role="status">
+  </div>`;
+  $("#getting-weather").append(spinner);
   //getting weather
   fetch(
     `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude={hourly, minutely}&units=metric&appid=${apiKey}`
   )
     .then(res => res.json())
     .then(data => {
+      if (data) {
+        $(".spinner-border").remove();
+      }
+      console.log(data);
       let { sunset, sunrise } = data.current;
       const { description } = data.current.weather[0];
       $("#message-weather").html(description);

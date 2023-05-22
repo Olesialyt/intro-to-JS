@@ -34,6 +34,8 @@ const onside = $(".onside");
 const main = $(".card.main");
 let classToCheck = 0;
 
+
+//displaying cards ...
 const classToCheckFind = e => {
   const classes = ["thermostat", "lamp", "to-do", "default", "music"];
   classes.forEach(el => {
@@ -49,6 +51,9 @@ function removeHiddenClass(classToCheck) {
   $(".onside").each(function () {
     if ($(this).hasClass(classToCheck)) {
       $(this).removeClass("hidden");
+      setTimeout(function() {
+        $(this).addClass("visible");
+      }, 10);
     }
   });
 }
@@ -87,27 +92,3 @@ $(document).ready(function () {
   }, 1000);
 });
 
-
-
-
-// class MusicPlayer extends Appliances {
-//   static music = JSON.parse(localStorage.getItem("tasks")) || [];
-//   constructor(name) {
-//     super(name, level);
-//     ///
-//     this.currentSong = currentSong;
-//     this.isPlaying = isPlaying;
-//   }
-//   play() {
-//     audio.play();
-//   }
-//   stop() {
-//     audio.stop();
-//   }
-//   skipToNextSong() {}
-//   volume() {}
-// }
-
-//////////////////////////
-
-// localStorage.setItem("light", JSON.stringify(Lamp.light));
