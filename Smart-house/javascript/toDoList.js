@@ -73,16 +73,19 @@ if (localStorage.getItem("tasks")) {
 
 const handleDelete = e => {
   const taskId = parseInt(e.target.id);
+  //порiвнюэ id з element id на який клiкнули
   ToDoList.tasks = ToDoList.tasks.filter(el => el.id !== taskId);
-
+  // видаляэ тег элемент з классом list-group-item до якого крiпляться всi таски
   $(".list-group-item").remove();
 
+  //loop через них i вивод на сторiнку
   ToDoList.tasks.forEach(el => {
     ToDoList.createTaskDom(el);
   });
 
-  // console.log(ToDoList.tasks);
+  // видалити в localStorage минулi таски
   localStorage.removeItem("tasks");
+  //додати новi
   localStorage.setItem("tasks", JSON.stringify(ToDoList.tasks));
 };
 
