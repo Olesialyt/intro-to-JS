@@ -1,9 +1,9 @@
 const form = $("form");
-const listGroup = $("#list-group");
 export class ToDoList {
   static tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
   static addTasks(taskInstance) {
+    //push to array instance
     ToDoList.tasks.push(taskInstance);
   }
 
@@ -13,7 +13,7 @@ export class ToDoList {
     this.isChecked = false;
     this.dueDate = dueDate;
     this.id = new Date().getTime();
-    ToDoList.addTasks(this);
+    ToDoList.addTasks(this); //instance to push
     ToDoList.createTaskDom(this);
   }
 
@@ -24,7 +24,8 @@ export class ToDoList {
   }
 
   static createTaskDom({ title, dueDate, task, id, isChecked }) {
-    listGroup.append(`<a href="#" class="list-group-item list-group-item-action" aria-current="true">
+    $("#list-group")
+      .append(`<a href="#" class="list-group-item list-group-item-action" aria-current="true">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">${title}</h5>
       <small>due ${dueDate}</small>
@@ -68,14 +69,19 @@ if (localStorage.getItem("tasks")) {
   ToDoList.getFromLocalStorage();
 }
 
+/// тут видаляэться =>
+
 const handleDelete = e => {
   const taskId = parseInt(e.target.id);
   ToDoList.tasks = ToDoList.tasks.filter(el => el.id !== taskId);
 
+  $(".list-group-item").remove();
+
   ToDoList.tasks.forEach(el => {
     ToDoList.createTaskDom(el);
   });
-  console.log(ToDoList.tasks);
+
+  // console.log(ToDoList.tasks);
   localStorage.removeItem("tasks");
   localStorage.setItem("tasks", JSON.stringify(ToDoList.tasks));
 };
@@ -83,6 +89,7 @@ const handleDelete = e => {
 if ($(".delete-task")) {
   $(".delete-task").on("click", handleDelete);
 }
+
 // let checkboxes = $("input[type='checkbox']");
 
 //????????????

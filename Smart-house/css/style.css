@@ -13,7 +13,9 @@
   margin-bottom: 0.5rem;
   background-color: #f5d698;
 }
-
+.hidden-btn {
+  display: none;
+}
 section {
   margin-top: 3.5rem;
 }

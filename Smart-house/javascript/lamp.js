@@ -70,6 +70,3 @@ $("#power-usage").on("click", () => {
   Lamp.countPowerUsage();
 });
 Lamp.countPowerUsage();
-Lamp.light.forEach(el => {
-  console.table(el);
-});

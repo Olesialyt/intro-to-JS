@@ -51,7 +51,7 @@
     <script type="module" src="javascript/default.js"></script>
     <script type="module" src="javascript/speech-reco.js"></script>
     <script type="module" src="javascript/lamp.js"></script>
-    <!-- <script type="module" src="javascript/MusicPlayer.js"></script> -->
+    <script type="module" src="javascript/MusicPlayer.js"></script>
     <script src="javascript/datekiper.js"></script>
   </head>
   <body class="color">
@@ -86,6 +86,7 @@
         <!-- icon --> 
         <div class="text-center">
           <span class="visually-hidden card-text" id="getting-weather">Getting weather...</span>
+          <p id="text-weather-onside"></p>
           <div class="spinner-border" role="status"></div>
         </div>
       </div>
@@ -121,7 +122,7 @@
         </p>
         <div class="text-center">
           <p class="fs-4">
-            Ligths is <span class="fw-bold" id="lamp-state">0%</span>
+            Brightness is <span class="fw-bold" id="lamp-state">0%</span>
           </p>
         </div>
         <div class="d-flex justify-content-evenly flex-row">
@@ -260,9 +261,13 @@
               />
               <div class="card-body">
                 <h5 class="card-text">Music player</h5>
-                <i class="bi bi-skip-start-fill"></i>
-                <i class="bi bi-pause-fill"></i>
-                <i class="bi bi-skip-end-fill"></i>
+                <p id="music-title"></p>
+                  <button type="button" class="fs-2 btn btn-outline-dark border-0" id="music-btn">
+                    <i class="btn-music bi bi-pause-circle-fill hidden-btn"></i>
+                    <i class="btn-music bi bi-play-circle-fill"></i>
+                  <!-- button pause/start -->
+                    <!-- <i class="bi bi-pause-circle-fill"></i> -->
+                  </button>
               </div>
             </div>
             <!--------- thermostat --------->

@@ -29,64 +29,51 @@ function success(pos) {
       if (data) {
         $(".spinner-border").remove();
       }
-      console.log(data);
       let { sunset, sunrise } = data.current;
       const { description } = data.current.weather[0];
       $("#message-weather").html(description);
       temperature = Math.ceil(data.current["temp"]);
 
       cardTitle.html(`${temperature}&#8451;`);
-      cardText.html(description);
+      $("#text-weather-onside").html(description);
 
       const currentHours = new Date().getHours();
       const isNight =
         currentHours >= new Date(sunset * 1000).getHours() ||
         currentHours <= new Date(sunrise * 1000).getHours(); //if it is between sunset time and sunrise time
 
-      switch (description) {
-        case isNight:
-          cardText.html("Night");
-          cardTitle.append(
-            `<i class="bi bi-moon-stars-fill" style="margin: 1.5rem"></i>`
-          );
-
-        case "few clouds":
-          cardTitle.append(`
+      if (description === isNight) {
+        cardText.html("Night");
+        cardTitle.append(
+          `<i class="bi bi-moon-stars-fill" style="margin: 1.5rem"></i>`
+        );
+      } else if (description === "few clouds") {
+        cardTitle.append(`
             <div class="partly_cloudy">
               <div class="partly_cloudy__sun"></div>
               <div class="partly_cloudy__cloud"></div>
             </div>
           `);
-          break;
-
-        case "clear sky":
-          cardTitle.append(`<div class="sunny"></div>`);
-          break;
-
-        case description.includes("clouds"):
-          cardTitle.append(`<div class="cloudy"></div>`);
-          break;
-
-        case description.includes("rain"):
-          cardTitle.append(`
+      } else if (description === "clear sky") {
+        cardTitle.append(`<div class="sunny"></div>`);
+      } else if (description.includes("clouds")) {
+        cardTitle.append(`<div class="cloudy"></div>`);
+      } else if (description.includes("rain")) {
+        cardTitle.append(`
             <div class="rainy">
               <div class="rainy__cloud"></div>
               <div class="rainy__rain"></div>
             </div>
           `);
-          break;
-
-        case description.includes("thunderstorm"):
-          cardTitle.append(`
+      } else if (description.includes("thunderstorm")) {
+        cardTitle.append(`
             <div class="thundery">
               <div class="thundery__cloud"></div>
               <div class="thundery__rain"></div>
             </div>
           `);
-          break;
-
-        default:
-          cardTitle.append(`
+      } else {
+        cardTitle.append(`
             <div class="partly_cloudy">
               <div class="partly_cloudy__sun"></div>
               <div class="partly_cloudy__cloud"></div>
