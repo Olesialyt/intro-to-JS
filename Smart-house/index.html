@@ -51,7 +51,8 @@
     <script type="module" src="javascript/default.js"></script>
     <script type="module" src="javascript/speech-reco.js"></script>
     <script type="module" src="javascript/lamp.js"></script>
-    <script type="module" src="javascript/MusicPlayer.js"></script>
+    <script type="module" src="javascript/musicPlayer.js"></script>
+    
     <script src="javascript/datekiper.js"></script>
   </head>
   <body class="color">
@@ -77,13 +78,13 @@
         </div>
       </div>
     </nav>
-    <!--hidden card for side section-->
+    <!--------- hidden cards for side section--------->
     <!--------- default --------->
     <div class="card onside default hidden">
       <div class="card-header">Weather</div>
       <div class="card-body">
         <h1 class="card-title"></h1>
-        <!-- icon --> 
+        <!--------- icon ---------> 
         <div class="text-center">
           <span class="visually-hidden card-text" id="getting-weather">Getting weather...</span>
           <p id="text-weather-onside"></p>
@@ -110,7 +111,6 @@
             <p class="fs-4">
               Power usage is <span class="fw-bold" id="lamp-power">0%</span>
             </p>
-            <!-- data-state="high" -->
             <div class="text-center">
               <a
                 href="#"
@@ -180,7 +180,6 @@
           <button type="button" class="btn btn-outline-light" id="skip-end"><i class="bi bi-skip-end-circle-fill"></i></button>
         </div>
         <p class="card-text d-flex justify-content-center"><audio controls>
-          <!-- <source src="./photo/audio.ogg" type="audio/ogg"> -->
           <source id="audio" src="" type="audio/mpeg">
           Your browser does not support the audio tag.
         </audio></p>
@@ -230,7 +229,7 @@
           <p id="input-warning"></p>
         </form>
         <hr />
-        <!--tasks to do -->
+        <!--------- tasks to do --------->
         <div id="list-group"></div>
       </div>
     </div>
@@ -248,7 +247,7 @@
           <span id="time" class="fs-4">Time</span>
           <hr />
         </div>
-        <!-- main -->
+        <!--------- main --------->
         <div class="col-md-8">
           <div class="row">
             <!--------- music player --------->
@@ -263,10 +262,9 @@
                 <h5 class="card-text">Music player</h5>
                 <p id="music-title"></p>
                   <button type="button" class="fs-2 btn btn-outline-dark border-0" id="music-btn">
+                    <!--------- button pause/start --------->
                     <i class="btn-music bi bi-pause-circle-fill hidden-btn"></i>
                     <i class="btn-music bi bi-play-circle-fill"></i>
-                  <!-- button pause/start -->
-                    <!-- <i class="bi bi-pause-circle-fill"></i> -->
                   </button>
               </div>
             </div>
@@ -279,11 +277,13 @@
                 alt="thermostat"
                 style="width: 10rem"
               />
-              <div class="card-body">
-                <h5 class="card-title">Thermostat</h5>
+              <div class="card-body d-flex align-items-center">
+                <div>
+                  <h5 class="card-title">Thermostat</h5>
                 <div id="slider-thermostat" class="slider thermostat">
                   <input type="range" min="0" max="50" value="22" />
                   <progress max="50" value="22"></progress>
+                </div>
                 </div>
               </div>
             </div>
@@ -328,7 +328,7 @@
                 </div>
               </div>
             </div>
-                <!-- weather -->
+                <!--------- weather --------->
             <div class="card default main" style="width: 32rem">
               <div class="card-body text-center">
                 <h5 class="card-title">Weather</h5>

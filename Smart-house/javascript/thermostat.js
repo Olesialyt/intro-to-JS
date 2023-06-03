@@ -46,8 +46,8 @@ slider.on("input", function () {
   progressBar.val(thermostatValue);
   output.html(thermostatValue);
   cardThermostatText.html(thermostatValue);
-  // Save the value to Thermostat class and localStorage
 
+  // Save the value to Thermostat class and localStorage
   const newInstance = new Thermostat("Thermostat", thermostatValue);
   Thermostat.addTemp(newInstance);
 
@@ -58,7 +58,6 @@ slider.on("input", function () {
   } else {
     newInstance.message = "Temperature is on a normal level";
   }
-
   newInstance.displayMessage();
 
   localStorage.setItem("temp", JSON.stringify(Thermostat.temperature));

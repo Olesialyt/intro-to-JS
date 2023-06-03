@@ -1,5 +1,5 @@
 export class Appliances {
-  constructor(name, level, id) {
+  constructor(name, level) {
     this._name = name;
     this._level = level;
   }
@@ -28,14 +28,13 @@ export class Appliances {
   }
 
 }
+
 //handling displaying card onside 
 const navLink = $(".nav-link");
 const onside = $(".onside");
 const main = $(".card.main");
 let classToCheck = 0;
 
-
-//displaying cards ...
 const classToCheckFind = e => {
   const classes = ["thermostat", "lamp", "to-do", "default", "music"];
   classes.forEach(el => {
@@ -45,7 +44,6 @@ const classToCheckFind = e => {
   });
   // each el in onside => add class hidden  so that no element is diplayed onside
 };
-
 const handleOnside = (e) => {
   navLink.removeClass("active");
   classToCheckFind(e);
@@ -57,7 +55,6 @@ const handleOnside = (e) => {
   onside.removeClass("visible").addClass("hidden");
   onside.filter(`.${classToCheck}`).removeClass("hidden").addClass("visible");
 };
-
 navLink.on("click", handleOnside);
 main.on("click", handleOnside);
 

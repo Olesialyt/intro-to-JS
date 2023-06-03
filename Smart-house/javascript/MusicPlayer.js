@@ -4,8 +4,8 @@ const url =
 fetch(url)
   .then(response => response.json())
   .then(data => {
-    const tracksCount = data.results.length;
-    let currentIndex = Math.floor(Math.random() * tracksCount);
+    const songsCount = data.results.length;
+    let currentIndex = Math.floor(Math.random() * songsCount);
 
     const displayAudio = index => {
       const title = data.results[index].name;
@@ -26,7 +26,7 @@ fetch(url)
     const handleSkipStart = () => {
       let previousIndex = currentIndex - 1;
       while (previousIndex < 0) {
-        previousIndex = previousIndex + tracksCount; //adding playlist length is num is negative => continue from the end
+        previousIndex = previousIndex + songsCount; //adding playlist length is num is negative => continue from the end
       }
       currentIndex = previousIndex;
       displayAudio(previousIndex);
@@ -34,8 +34,8 @@ fetch(url)
 
     const handleSkipEnd = () => {
       let nextIndex = currentIndex + 1;
-      if (nextIndex >= tracksCount) {
-        nextIndex = tracksCount % nextIndex; //if index is more than my playlist length i with modulo divide it wich gives me a number left => wich is similar like beging from the start again
+      if (nextIndex >= songsCount) {
+        nextIndex = songsCount % nextIndex; //if index is more than my playlist length i with modulo divide it wich gives me a number left => wich is similar like beging from the start again
       }
       currentIndex = nextIndex;
       displayAudio(nextIndex);

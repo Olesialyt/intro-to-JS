@@ -15,6 +15,7 @@ class Lamp extends Appliances {
   static displayLastLight() {
     $("#lamp-state").html(Lamp.light[Lamp.light.length - 1]._level);
   }
+
   constructor(name, level) {
     super(name, level);
     this._time = new Date().getTime();
@@ -26,6 +27,7 @@ class Lamp extends Appliances {
   get level() {
     return this._level;
   }
+
   static countPowerUsage() {
     const lampPower = 60;
     let totalPowerUsage = 0;
@@ -45,7 +47,6 @@ class Lamp extends Appliances {
       const percentage = parseFloat(currentLight._level) / 100; // Convert level to decimal
       const usageIntensity = lampPower * percentage;
       const powerUsage = usageIntensity * usageInHours;
-
       totalPowerUsage += powerUsage;
     }
 
